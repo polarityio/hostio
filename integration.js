@@ -98,7 +98,7 @@ function doLookup(entities, options, cb) {
         lookupResults.push({
           entity: result.entity,
           data: {
-            summary: [],
+            summary: getSummaryTags(result.body),
             details: result.body
           }
         });
@@ -108,6 +108,17 @@ function doLookup(entities, options, cb) {
     Logger.debug({ lookupResults }, 'Results');
     cb(null, lookupResults);
   });
+}
+
+function getSummaryTags(body){
+  const tags = [];
+  if(body.web && body.web.ip){
+    tags.push(`IP: ${body.web.ip}`);
+  }
+  if(body.web && body.web.rank){
+    tags.push(`Rank: ${body.web.rank}`);
+  }
+  return tags;
 }
 
 function handleRestError(error, entity, res, body) {
