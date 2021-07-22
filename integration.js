@@ -61,8 +61,8 @@ function doLookup(entities, options, cb) {
 
     Logger.trace({ requestOptions }, 'Request Options');
 
-    tasks.push(function(done) {
-      requestWithDefaults(requestOptions, function(error, res, body) {
+    tasks.push(function (done) {
+      requestWithDefaults(requestOptions, function (error, res, body) {
         Logger.trace({ body, status: res.statusCode });
         let processedResult = handleRestError(error, entity, res, body);
 
@@ -85,11 +85,11 @@ function doLookup(entities, options, cb) {
 
     results.forEach((result) => {
       if (
-          result.body === null ||
-          _.isEmpty(result.body) ||
-          (result.body.web && _.isEmpty(result.body.web)) ||
-          (result.body.dns && _.isEmpty(result.body.dns))
-        ) {
+        result.body === null ||
+        _.isEmpty(result.body) ||
+        (result.body.web && _.isEmpty(result.body.web)) ||
+        (result.body.dns && _.isEmpty(result.body.dns))
+      ) {
         lookupResults.push({
           entity: result.entity,
           data: null
@@ -155,7 +155,8 @@ function handleRestError(error, entity, res, body) {
 function validateOption(errors, options, optionName, errMessage) {
   if (
     typeof options[optionName].value !== 'string' ||
-    (typeof options[optionName].value === 'string' && options[optionName].value.length === 0)
+    (typeof options[optionName].value === 'string' &&
+      options[optionName].value.length === 0)
   ) {
     errors.push({
       key: optionName,
