@@ -94,9 +94,7 @@
             {{fa-icon icon="database" fixedWidth=true}}DNS A Records
         </h1>
         {{#each details.dns.a as |a_rec|}}
-          <div>
             <span class="section-tag"><a href="https://host.io/ip/{{a_rec}}" title="https://host.io/ip/{{a_rec}}" class="p-link"> {{a_rec}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a></span>
-          </div>
         {{/each}}
       {{/if}}
       {{#if details.dns.aaaa}}
