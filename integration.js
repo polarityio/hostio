@@ -61,9 +61,11 @@ function doLookup(entities, options, cb) {
 
     Logger.trace({ requestOptions }, 'Request Options');
 
-    tasks.push(function(done) {
-      requestWithDefaults(requestOptions, function(error, res, body) {
-        Logger.trace({ body, status: res.statusCode });
+    tasks.push(function (done) {
+      requestWithDefaults(requestOptions, function (error, res, body) {
+
+        Logger.trace({ body, status: res ? res.statusCode : 'Not Available'});
+
         let processedResult = handleRestError(error, entity, res, body);
 
         if (processedResult.error) {
@@ -85,11 +87,11 @@ function doLookup(entities, options, cb) {
 
     results.forEach((result) => {
       if (
-          result.body === null ||
-          _.isEmpty(result.body) ||
-          (result.body.web && _.isEmpty(result.body.web)) ||
-          (result.body.dns && _.isEmpty(result.body.dns))
-        ) {
+        result.body === null ||
+        _.isEmpty(result.body) ||
+        (result.body.web && _.isEmpty(result.body.web)) ||
+        (result.body.dns && _.isEmpty(result.body.dns))
+      ) {
         lookupResults.push({
           entity: result.entity,
           data: null
@@ -98,7 +100,7 @@ function doLookup(entities, options, cb) {
         lookupResults.push({
           entity: result.entity,
           data: {
-            summary: [],
+            summary: getSummaryTags(result.body),
             details: result.body
           }
         });
@@ -108,6 +110,17 @@ function doLookup(entities, options, cb) {
     Logger.debug({ lookupResults }, 'Results');
     cb(null, lookupResults);
   });
+}
+
+function getSummaryTags(body) {
+  const tags = [];
+  if (body.web && body.web.ip) {
+    tags.push(`IP: ${body.web.ip}`);
+  }
+  if (body.web && body.web.rank) {
+    tags.push(`Rank: ${body.web.rank}`);
+  }
+  return tags;
 }
 
 function handleRestError(error, entity, res, body) {
@@ -129,17 +142,20 @@ function handleRestError(error, entity, res, body) {
   } else if (res.statusCode === 403) {
     result = {
       error: 'Unauthorized',
-      detail: body.query_status
+      statusCode: res.statusCode,
+      detail: body.error
     };
   } else if (res.statusCode === 404) {
     result = {
       error: 'Invalid Domain',
-      detail: body.query_status
+      statusCode: res.statusCode,
+      detail: body.error
     };
   } else if (res.statusCode === 429) {
     result = {
       error: 'API Limit Exceeded',
-      detail: body.query_status
+      statusCode: res.statusCode,
+      detail: body.error
     };
   } else {
     result = {
@@ -155,7 +171,8 @@ function handleRestError(error, entity, res, body) {
 function validateOption(errors, options, optionName, errMessage) {
   if (
     typeof options[optionName].value !== 'string' ||
-    (typeof options[optionName].value === 'string' && options[optionName].value.length === 0)
+    (typeof options[optionName].value === 'string' &&
+      options[optionName].value.length === 0)
   ) {
     errors.push({
       key: optionName,

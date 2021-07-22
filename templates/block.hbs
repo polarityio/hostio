@@ -1,11 +1,11 @@
 {{#if details}}
     <h1 class="p-title">
-        {{fa-icon "info" fixedWidth=true}} Domain Summary
+        {{fa-icon icon="info" fixedWidth=true}} Domain Summary
     </h1>
     {{#if details.web.domain}}
       <div>
           <span class="p-key">Domain </span>
-          <a href="https://host.io/{{details.web.domain}}" class="p-link"> {{details.web.domain}} {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+          <a href="https://host.io/{{details.web.domain}}" title="https://host.io/{{details.web.domain}}" class="p-link"> {{details.web.domain}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
       </div>
     {{/if}}
     {{#if details.web.rank}}
@@ -23,7 +23,7 @@
     {{#if details.web.ip}}
       <div>
           <span class="p-key">IP: </span>
-          <a href="https://host.io/ip/{{details.web.ip}}" class="p-link"> {{details.web.ip}} {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+          <a href="https://host.io/ip/{{details.web.ip}}" title="https://host.io/ip/{{details.web.ip}}" class="p-link"> {{details.web.ip}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
       </div>
     {{/if}}
     {{#if details.web.date}}
@@ -41,94 +41,84 @@
     {{#if details.web.title}}
       <div>
           <span class="p-key">HTML Title: </span>
-          <span class="p-value">{{details.web.title}}</span>
+          <span class="p-value block-text">{{details.web.title}}</span>
       </div>
     {{/if}}
     {{#if details.web.description}}
       <div>
           <span class="p-key">HTML Description: </span>
-          <span class="p-value">{{details.web.description}}</span>
+          <span class="p-value block-text">{{details.web.description}}</span>
       </div>
     {{/if}}
     {{#if details.web.links}}
       <h1 class="p-title">
-          {{fa-icon "link" fixedWidth=true}} HTML Links
+          {{fa-icon icon="link" fixedWidth=true}} HTML Links
       </h1>
       {{#each details.web.links as |link|}}
-        <div>
-          <span class="section-tag"><a href="https://host.io/{{link}}" class="p-link"> {{link}} {{fa-icon "external-link-square" class="external-link-icon"}}</a></span>
-        </div>
+          <span class="section-tag"><a href="https://host.io/{{link}}" title="https://host.io/{{link}}" class="p-link"> {{link}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a></span>
       {{/each}}
-      <div>
-        <a href="https://host.io/redirects/{{details.web.domain}}" class="p-link"> (Show All Redirects) {{fa-icon "external-link-square" class="external-link-icon"}}</a>
-      </div>
-      <div>
-        <a href="https://host.io/backlinks/{{details.web.domain}}" class="p-link"> (Show All Backlinks) {{fa-icon "external-link-square" class="external-link-icon"}}</a>
-      </div>
+    {{/if}}
+    {{#if details.web.domain}}
+        <h1 class="p-title">{{fa-icon icon="link" fixedWidth=true}} Backlinks and Redirects</h1>
+        <div>
+            <a href="https://host.io/redirects/{{details.web.domain}}" title="https://host.io/redirects/{{details.web.domain}}" class="p-link"> Show All Redirects {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
+        </div>
+        <div>
+            <a href="https://host.io/backlinks/{{details.web.domain}}" title="https://host.io/backlinks/{{details.web.domain}}" class="p-link"> Show All Backlinks {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
+        </div>
     {{/if}}
     <h1 class="p-title">
-        {{fa-icon "users" fixedWidth=true}} Social Media
+        {{fa-icon icon="users" fixedWidth=true}} Social Media
     </h1>
     {{#if details.web.facebook}}
       <div>
           <span class="p-key">Facebook: </span>
-          <a href="https://facebook.com/{{details.web.facebook}}" class="p-link"> {{details.web.facebook}} {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+          <a href="https://facebook.com/{{details.web.facebook}}" title="https://facebook.com/{{details.web.facebook}}" class="p-link"> {{details.web.facebook}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
       </div>
     {{/if}}
     {{#if details.web.twitter}}
       <div>
           <span class="p-key">Twitter: </span>
-          <a href="https://twitter.com/{{details.web.twitter}}" class="p-link"> {{details.web.twitter}} {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+          <a href="https://twitter.com/{{details.web.twitter}}" title="https://twitter.com/{{details.web.twitter}}" class="p-link"> {{details.web.twitter}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
       </div>
     {{/if}}
     {{#if details.web.instagram}}
       <div>
           <span class="p-key">Instagram: </span>
-          <a href="https://instagram.com/{{details.web.instagram}}" class="p-link"> {{details.web.instagram}} {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+          <a href="https://instagram.com/{{details.web.instagram}}" title="https://instagram.com/{{details.web.instagram}}" class="p-link"> {{details.web.instagram}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
       </div>
     {{/if}}
     {{#if details.dns.domain}}
-      <h1 class="p-title">
-          {{fa-icon "question" fixedWidth=true}} DNS Records
-      </h1>
       {{#if details.dns.a}}
         <h1 class="p-title">
-            {{fa-icon "database" fixedWidth=true}} A Records
+            {{fa-icon icon="database" fixedWidth=true}}DNS A Records
         </h1>
         {{#each details.dns.a as |a_rec|}}
-          <div>
-            <span class="section-tag"><a href="https://host.io/ip/{{a_rec}}" class="p-link"> {{a_rec}} {{fa-icon "external-link-square" class="external-link-icon"}}</a></span>
-          </div>
+            <span class="section-tag"><a href="https://host.io/ip/{{a_rec}}" title="https://host.io/ip/{{a_rec}}" class="p-link"> {{a_rec}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a></span>
         {{/each}}
       {{/if}}
       {{#if details.dns.aaaa}}
         <h1 class="p-title">
-            {{fa-icon "database" fixedWidth=true}} AAAA Records
+            {{fa-icon icon="database" fixedWidth=true}}DNS AAAA Records
         </h1>
         {{#each details.dns.aaaa as |aaaa_rec|}}
-          <div>
-            <span class="section-tag"><a href="https://host.io/ip/{{aaaa_rec}}" class="p-link"> {{aaaa_rec}} {{fa-icon "external-link-square" class="external-link-icon"}}</a></span>
-          </div>
+            <span class="section-tag"><a href="https://host.io/ip/{{aaaa_rec}}" title="https://host.io/ip/{{aaaa_rec}}" class="p-link"> {{aaaa_rec}} {{fa-icon icon="external-link-square" class="external-link-icon"}}</a></span>
         {{/each}}
       {{/if}}
       {{#if details.dns.mx}}
         <h1 class="p-title">
-            {{fa-icon "database" fixedWidth=true}} MX Records
+            {{fa-icon icon="database" fixedWidth=true}}DNS MX Records
         </h1>
         {{#each details.dns.mx as |mx_rec|}}
-          <div>
             <span class="section-tag">{{mx_rec}}</span>
-          </div>
         {{/each}}
       {{/if}}
       {{#if details.dns.ns}}
         <h1 class="p-title">
-            {{fa-icon "database" fixedWidth=true}} NS Records
+            {{fa-icon icon="database" fixedWidth=true}}DNS NS Records
         </h1>
         {{#each details.dns.ns as |ns_rec|}}
-          <div>
             <span class="section-tag">{{ns_rec}}</span>
-          </div>
         {{/each}}
       {{/if}}
     {{/if}}
