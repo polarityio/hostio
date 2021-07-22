@@ -63,7 +63,9 @@ function doLookup(entities, options, cb) {
 
     tasks.push(function (done) {
       requestWithDefaults(requestOptions, function (error, res, body) {
-        Logger.trace({ body, status: res.statusCode });
+
+        Logger.trace({ body, status: res ? res.statusCode : 'Not Available'});
+
         let processedResult = handleRestError(error, entity, res, body);
 
         if (processedResult.error) {
@@ -110,12 +112,12 @@ function doLookup(entities, options, cb) {
   });
 }
 
-function getSummaryTags(body){
+function getSummaryTags(body) {
   const tags = [];
-  if(body.web && body.web.ip){
+  if (body.web && body.web.ip) {
     tags.push(`IP: ${body.web.ip}`);
   }
-  if(body.web && body.web.rank){
+  if (body.web && body.web.rank) {
     tags.push(`Rank: ${body.web.rank}`);
   }
   return tags;
@@ -140,16 +142,19 @@ function handleRestError(error, entity, res, body) {
   } else if (res.statusCode === 403) {
     result = {
       error: 'Unauthorized',
+      statusCode: res.statusCode,
       detail: body.error
     };
   } else if (res.statusCode === 404) {
     result = {
       error: 'Invalid Domain',
+      statusCode: res.statusCode,
       detail: body.error
     };
   } else if (res.statusCode === 429) {
     result = {
       error: 'API Limit Exceeded',
+      statusCode: res.statusCode,
       detail: body.error
     };
   } else {
