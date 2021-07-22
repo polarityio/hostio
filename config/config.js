@@ -80,15 +80,15 @@ module.exports = {
    * @type Array
    * @optional
    */
-   options: [
-     {
-       key: "apiKey",
-       name: "Valid host.io API Key",
-       description: "Valid host.io API Key",
-       default: "",
-       type: "password",
-       userCanEdit: true,
-       adminOnly: false
-     }
-   ]
+  options: [
+    {
+      key: 'apiKey',
+      name: 'Valid host.io API Key',
+      description: 'Valid host.io API Key',
+      default: '',
+      type: 'password',
+      userCanEdit: true,
+      adminOnly: false
+    }
+  ]
 };
