@@ -129,17 +129,17 @@ function handleRestError(error, entity, res, body) {
   } else if (res.statusCode === 403) {
     result = {
       error: 'Unauthorized',
-      detail: body.query_status
+      detail: body.error
     };
   } else if (res.statusCode === 404) {
     result = {
       error: 'Invalid Domain',
-      detail: body.query_status
+      detail: body.error
     };
   } else if (res.statusCode === 429) {
     result = {
       error: 'API Limit Exceeded',
-      detail: body.query_status
+      detail: body.error
     };
   } else {
     result = {
