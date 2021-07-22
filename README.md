@@ -1,8 +1,8 @@
 # Polarity host.io Integration
 
-The Polarity host.io integration allows for domain entity types to be enriched against the host.io API. Enabling Analysts to have instant context on a domains IP, backlinks, social sites and more. 
+The Polarity host.io integration allows for domain entity types to be enriched against the host.io API enabling analysts to have instant context on a domains IP, backlinks, social sites and more. 
 
-By default the integration is set to on-demand only.
+This is an on-demand only integration.
 
 Check out the integration below: 
 
@@ -13,7 +13,7 @@ Check out the integration below:
 ## Host.io Configuration Options 
 
 ### API Key 
-An API key fro Host.io is required in order to utilize the service. To obtain a free API Key you can sign up below: 
+An API key from Host.io is required in order to utilize the service. To obtain a free API Key you can sign up below: 
 
 Register for a free account (Max 1000 lookups per month) at the following URL:
 https://host.io/signup
