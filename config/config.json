@@ -1,0 +1,43 @@
+{
+  "name": "Host.io",
+  "acronym": "HOST",
+  "defaultColor": "light-gray",
+  "onDemandOnly": true,
+  "description": "host.io provides a powerful and fast domain name data API.",
+  "entityTypes": [
+    "domain"
+  ],
+  "styles": [
+    "./styles/style.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "apiKey",
+      "name": "Valid host.io API Key",
+      "description": "Valid host.io API Key",
+      "default": "",
+      "type": "password",
+      "userCanEdit": true,
+      "adminOnly": false
+    }
+  ]
+}
