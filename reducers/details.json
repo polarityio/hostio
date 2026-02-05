@@ -1,0 +1,30 @@
+{
+  "root": {
+    "path": "",
+    "on_null": "return_empty"
+  },
+  "pipeline": [
+    {
+      "op": "copy",
+      "from": "",
+      "to": "reduced_results"
+    },
+    {
+      "op": "drop",
+      "paths": [
+        "reduced_results.web.loc",
+        "reduced_results.dns.loc",
+        "reduced_results.web.timezone",
+        "reduced_results.dns.timezone"
+      ]
+    },
+    {
+      "op": "prune",
+      "strategy": "empty_values",
+      "target": "reduced_results"
+    }
+  ],
+  "output": {
+    "result": "$working.reduced_results"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "web": {
+    "domain": "polarity.io",
+    "rank": 245632,
+    "url": "https://polarity.io",
+    "ip": "104.21.35.142",
+    "date": "2024-01-15",
+    "length": 52847,
+    "title": "Polarity - Memory Augmentation Platform for Security Analysts",
+    "description": "Polarity is a memory-augmentation platform that improves and accelerates analyst decision making by surfacing contextual data automatically.",
+    "links": [
+      "github.com",
+      "twitter.com",
+      "linkedin.com",
+      "docs.polarity.io"
+    ],
+    "facebook": "polarityio",
+    "twitter": "PolarityIO",
+    "instagram": "polarity_io",
+    "loc": {
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "timezone": "America/Los_Angeles",
+    "server": "cloudflare",
+    "encoding": "utf-8"
+  },
+  "dns": {
+    "domain": "polarity.io",
+    "a": [
+      "104.21.35.142",
+      "172.67.182.71"
+    ],
+    "aaaa": [
+      "2606:4700:3034::6815:238e",
+      "2606:4700:3033::ac43:b647"
+    ],
+    "mx": [
+      "10 mx1.example.com",
+      "20 mx2.example.com"
+    ],
+    "ns": [
+      "ns1.cloudflare.com",
+      "ns2.cloudflare.com"
+    ],
+    "loc": {
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "timezone": "America/Los_Angeles",
+    "ttl": 300
+  },
+  "metadata": {
+    "scan_date": "2024-01-15T10:30:00Z",
+    "api_version": "v2",
+    "credits_used": 1
+  }
+}
